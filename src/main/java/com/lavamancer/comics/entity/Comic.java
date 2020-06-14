@@ -2,10 +2,7 @@ package com.lavamancer.comics.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -17,6 +14,7 @@ public class Comic {
 
     @ManyToOne
     private Genre genre;
+
     @ManyToOne
     private Publisher publisher;
     @ManyToOne

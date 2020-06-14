@@ -4,7 +4,9 @@ import com.lavamancer.comics.entity.Comic;
 import com.lavamancer.comics.repository.ComicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -32,4 +34,7 @@ public class ComicService {
         return comic;
     }
 
+    public List<Comic> findAll() {
+        return comicRepository.findAll();
+    }
 }

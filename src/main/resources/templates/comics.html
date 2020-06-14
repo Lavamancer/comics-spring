@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Comics</h1>
+
+<ul>
+    <li th:each="comic : ${comics}">
+        <span th:text="${comic.title}">Genre Name</span> -
+        <span th:text="${comic.author.name}">Author Name</span> -
+        <span th:text="${comic.publisher.name}">Publisher Name</span> -
+        <span th:text="${comic.genre.name}">Publisher Name</span>
+    </li>
+</ul>
+
+</body>
+</html>

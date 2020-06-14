@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Editoriales</h1>
+
+<ul>
+    <li th:each="publisher : ${publishers}" th:text="${publisher.name}">Publisher Item</li>
+</ul>
+
+</body>
+</html>
