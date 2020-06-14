@@ -4,7 +4,7 @@ import com.lavamancer.comics.entity.Author;
 import com.lavamancer.comics.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import javax.annotation.PostConstruct;
+
 import javax.transaction.Transactional;
 
 @Service
@@ -14,14 +14,19 @@ public class AuthorService {
     @Autowired AuthorRepository authorRepository;
 
 
-    @PostConstruct
     public void init() {
+        create("Stan Lee");
+        create("Joe Quesada");
+    }
+
+    public Author create(String name) {
         Author author = new Author();
-        author.setName("Stan Lee");
-        authorRepository.save(author);
-        author = new Author();
-        author.setName("Joe Quesada");
-        authorRepository.save(author);
+        author.setName(name);
+        return authorRepository.save(author);
+    }
+
+    public Author findById(Long id) {
+        return authorRepository.findById(id).get();
     }
 
 }

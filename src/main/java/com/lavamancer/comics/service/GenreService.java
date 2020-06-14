@@ -5,7 +5,6 @@ import com.lavamancer.comics.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 @Service
@@ -15,11 +14,20 @@ public class GenreService {
     @Autowired GenreRepository genreRepository;
 
 
-    @PostConstruct
     public void init() {
+        create("Ciencia Ficción");
+        create("Terror");
+        create("Comedia");
+    }
+
+    public Genre create(String name) {
         Genre genre = new Genre();
-        genre.setName("Terror");
-        genreRepository.save(genre);
+        genre.setName(name);
+        return genreRepository.save(genre);
+    }
+
+    public Genre findById(Long id) {
+        return genreRepository.findById(id).get();
     }
 
 }

@@ -4,7 +4,7 @@ import com.lavamancer.comics.entity.Publisher;
 import com.lavamancer.comics.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import javax.annotation.PostConstruct;
+
 import javax.transaction.Transactional;
 
 @Service
@@ -14,12 +14,18 @@ public class PublisherService {
     @Autowired PublisherRepository publisherRepository;
 
 
-    @PostConstruct
     public void init() {
+        create("Mavel");
+    }
+
+    public Publisher create(String name) {
         Publisher publisher = new Publisher();
-        publisher.setName("Marvel");
-        publisherRepository.save(publisher);
+        publisher.setName(name);
+        return publisherRepository.save(publisher);
     }
 
 
+    public Publisher findById(Long id) {
+        return publisherRepository.findById(id).get();
+    }
 }
